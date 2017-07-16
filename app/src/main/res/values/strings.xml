@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">RetroAuth Authentication</string>
+
+    <string name="authentication_ACTION" translatable="false">retroauth.test.cwdsg05.retroauthauthentication.ACTION</string>
+    <string name="authentication_ACCOUNT" translatable="false">retroauth.test.cwdsg05.retroauthauthentication.ACCOUNT</string>
+    <string name="authentication_TOKEN" translatable="false">retroauth.test.cwdsg05.retroauthauthentication.TOKEN</string>
+    <string name="authentication_EMAIL" translatable="false">retroauth.test.cwdsg05.retroauthauthentication.EMAIL</string>
+    <string name="authentication_LOCALE" translatable="false">retroauth.test.cwdsg05.retroauthauthentication.LOCALE</string>
+
+
+</resources>
