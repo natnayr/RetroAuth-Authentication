@@ -32,8 +32,8 @@ public class RetroAuthProvider implements Provider<Account, AndroidTokenType, An
         if(!response.isSuccessful()){
             if(response.code() == 401){
                 tokenStorage.removeToken(account, androidTokenType, androidToken);
-                return false;
             }
+            return true;
         }
 
         return false;

@@ -3,8 +3,6 @@ package retroauth.test.cwdsg05.retroauthauthentication.views;
 import android.accounts.Account;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.os.CountDownTimer;
-import android.support.design.widget.Snackbar;
 import android.support.v7.widget.AppCompatEditText;
 import android.util.Log;
 import android.view.View;
@@ -120,5 +118,10 @@ public class AuthActivity extends AuthenticationActivity implements Observer<Res
     @Override
     public void onComplete() {
         Log.e(LOG_TAG, "APP onComplete");
+    }
+
+    @Override
+    public void finish() {
+        super.finish();
     }
 }

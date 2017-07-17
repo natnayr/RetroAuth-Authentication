@@ -6,5 +6,7 @@
     <string name="authentication_TOKEN" translatable="false">retroauth.test.cwdsg05.retroauthauthentication.TOKEN</string>
     <string name="authentication_EMAIL" translatable="false">retroauth.test.cwdsg05.retroauthauthentication.EMAIL</string>
     <string name="authentication_LOCALE" translatable="false">retroauth.test.cwdsg05.retroauthauthentication.LOCALE</string>
+    <string name="authentication_INVALID" translatable="false">INVALID TOKEN</string>
+
 
 </resources>
