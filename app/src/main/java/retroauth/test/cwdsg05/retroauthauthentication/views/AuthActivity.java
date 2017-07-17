@@ -1,6 +1,9 @@
 package retroauth.test.cwdsg05.retroauthauthentication.views;
 
+import android.accounts.Account;
+import android.os.AsyncTask;
 import android.os.Bundle;
+import android.os.CountDownTimer;
 import android.support.design.widget.Snackbar;
 import android.support.v7.widget.AppCompatEditText;
 import android.util.Log;
@@ -9,6 +12,8 @@ import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import com.andretietz.retroauth.AuthenticationActivity;
+
+import java.util.logging.Handler;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -69,7 +74,7 @@ public class AuthActivity extends AuthenticationActivity implements Observer<Res
 
         //do http call
         AuthClient authClient = AuthClient.getInstance();
-        authClient.loginUser(inputEmail, inputPassword, APIServices.API_SITE_CONFIG_ID)
+        authClient.loginUser(inputEmail, inputPassword, MainActivity.getUniqueAndroidID(this))
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(this);
@@ -84,8 +89,24 @@ public class AuthActivity extends AuthenticationActivity implements Observer<Res
     @Override
     public void onNext(@NonNull Response<AuthResponse> response) {
         if(response.isSuccessful()) {
-            Toast.makeText(this, authResponse.getServer().getMessage(),
+            authResponse = response.body();
+            Toast.makeText(this, "APP " + authResponse.getServer().getMessage() + " " +
+                            authResponse.getMember().getName() +
+                            " Token: " + authResponse.getAuthToken(),
                     Toast.LENGTH_LONG).show();
+
+            final String token = authResponse.getAuthToken();
+            final String user = authResponse.getMember().getName();
+            final String email = authResponse.getMember().getEmail();
+
+            if(token != null) {
+                Account account = createOrGetAccount(user);
+                storeToken(account, getRequestedTokenType(), token);
+                storeUserData(account, getString(R.string.authentication_EMAIL), email);
+                finalizeAuthentication(account);
+            }
+
+
         }
     }
 

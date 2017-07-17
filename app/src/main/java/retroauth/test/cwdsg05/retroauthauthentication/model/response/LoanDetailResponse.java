@@ -7,8 +7,6 @@ package retroauth.test.cwdsg05.retroauthauthentication.model.response;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-import java.util.List;
-
 import retroauth.test.cwdsg05.retroauthauthentication.model.Loan;
 import retroauth.test.cwdsg05.retroauthauthentication.model.Server;
 

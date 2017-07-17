@@ -33,7 +33,7 @@ public class LoanClient {
     public LoanClient(){
         final Gson gson = new GsonBuilder().serializeNulls().create();
 
-//        //Http Inteceptor
+        //Http Inteceptor
         final HttpLoggingInterceptor loggingInterceptor = new HttpLoggingInterceptor();
         loggingInterceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
 
