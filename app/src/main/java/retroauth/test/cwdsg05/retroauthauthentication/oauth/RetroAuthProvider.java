@@ -9,12 +9,16 @@ import com.andretietz.retroauth.TokenStorage;
 
 import okhttp3.Request;
 import okhttp3.Response;
+import retroauth.test.cwdsg05.retroauthauthentication.data.APIServices;
+import retrofit2.Retrofit;
 
 /**
  * Created by cwdsg05 on 16/7/17.
  */
 
 public class RetroAuthProvider implements Provider<Account, AndroidTokenType, AndroidToken>{
+
+    private APIServices apiServices;
 
     @Override
     public Request authenticateRequest(Request request, AndroidToken androidToken) {
@@ -34,4 +38,10 @@ public class RetroAuthProvider implements Provider<Account, AndroidTokenType, An
 
         return false;
     }
+
+    public void onRetrofitCreated(Retrofit retrofit){
+        this.apiServices = retrofit.create(APIServices.class);
+    }
+
+
 }

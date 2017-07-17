@@ -1,7 +1,5 @@
 package retroauth.test.cwdsg05.retroauthauthentication.data.client;
 
-import android.content.Context;
-
 import com.andretietz.retroauth.AndroidAuthenticationHandler;
 import com.andretietz.retroauth.AndroidTokenType;
 import com.andretietz.retroauth.Retroauth;
@@ -12,7 +10,7 @@ import io.reactivex.Observable;
 import okhttp3.OkHttpClient;
 import okhttp3.logging.HttpLoggingInterceptor;
 import retroauth.test.cwdsg05.retroauthauthentication.data.APIServices;
-import retroauth.test.cwdsg05.retroauthauthentication.model.response.LoanListResponse;
+import retroauth.test.cwdsg05.retroauthauthentication.model.response.LoanDetailResponse;
 import retroauth.test.cwdsg05.retroauthauthentication.oauth.RetroAuthProvider;
 import retrofit2.Response;
 import retrofit2.Retrofit;
@@ -43,7 +41,6 @@ public class LoanClient {
                 .addInterceptor(loggingInterceptor)
                 .build();
 
-
         RetroAuthProvider provider = new RetroAuthProvider();
 
         retrofit = new Retroauth.Builder<>(AndroidAuthenticationHandler.create(provider,
@@ -53,6 +50,8 @@ public class LoanClient {
                 .client(httpClient)
                 .baseUrl(APIServices.API_LIVE_BASE_URL + APIServices.LIVE_STAGE)
                 .build();
+
+        provider.onRetrofitCreated(retrofit);
 
         this.apiServices = retrofit.create(APIServices.class);
     }
@@ -66,7 +65,7 @@ public class LoanClient {
         return instance;
     }
 
-    public Observable<Response<LoanListResponse>> getLiveLoans(String deviceId){
-        return apiServices.getLoansList(deviceId, APIServices.API_SITE_CONFIG_ID);
+    public Observable<Response<LoanDetailResponse>> getLoanDetails(int loanId, String deviceId){
+        return apiServices.getLoanDetail(loanId, deviceId, APIServices.API_SITE_CONFIG_ID);
     }
 }

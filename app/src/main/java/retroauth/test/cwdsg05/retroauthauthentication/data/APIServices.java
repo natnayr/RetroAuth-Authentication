@@ -3,14 +3,16 @@ package retroauth.test.cwdsg05.retroauthauthentication.data;
 import com.andretietz.retroauth.Authenticated;
 
 import io.reactivex.Observable;
+import retroauth.test.cwdsg05.retroauthauthentication.R;
 import retroauth.test.cwdsg05.retroauthauthentication.model.request.LoginRequest;
 import retroauth.test.cwdsg05.retroauthauthentication.model.response.AuthResponse;
-import retroauth.test.cwdsg05.retroauthauthentication.model.response.LoanListResponse;
+import retroauth.test.cwdsg05.retroauthauthentication.model.response.LoanDetailResponse;
 import retrofit2.Response;
 import retrofit2.http.Body;
 import retrofit2.http.GET;
 import retrofit2.http.Headers;
 import retrofit2.http.POST;
+import retrofit2.http.Path;
 import retrofit2.http.Query;
 
 /**
@@ -26,14 +28,14 @@ public interface APIServices {
     public static final String API_SITE_CONFIG_SG = "sg";
     public static final String API_SITE_CONFIG_ID = "id";
 
+
     @POST("oauth/login")
     @Headers({"Content-type: application/json"})
     Observable<Response<AuthResponse>> postLoginUser(@Body LoginRequest data);
 
-    @Authenticated
-    @GET("loans/loan_listing")
+    @Authenticated({R.string.authentication_ACCOUNT, R.string.authentication_TOKEN})
+    @GET("loans/loan_details/{id}")
     @Headers({"Content-type: application/json"})
-    Observable<Response<LoanListResponse>> getLoansList(@Query("device_id") String deviceId, @Query("site_config") String siteConfig);
-
+    Observable<Response<LoanDetailResponse>> getLoanDetail(@Path("id") int id, @Query("device_id") String deviceId, @Query("site_config") String siteConfig);
 
 }
