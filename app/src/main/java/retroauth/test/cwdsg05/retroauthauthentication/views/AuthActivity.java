@@ -22,7 +22,6 @@ import io.reactivex.disposables.Disposable;
 import io.reactivex.schedulers.Schedulers;
 import retroauth.test.cwdsg05.retroauthauthentication.HashingUtils;
 import retroauth.test.cwdsg05.retroauthauthentication.R;
-import retroauth.test.cwdsg05.retroauthauthentication.data.APIServices;
 import retroauth.test.cwdsg05.retroauthauthentication.data.client.AuthClient;
 import retroauth.test.cwdsg05.retroauthauthentication.model.response.AuthResponse;
 import retrofit2.Response;
