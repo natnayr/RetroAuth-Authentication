@@ -102,8 +102,6 @@ public class AuthActivity extends AuthenticationActivity implements Observer<Res
                 storeUserData(account, getString(R.string.authentication_EMAIL), email);
                 finalizeAuthentication(account);
             }
-
-
         }
     }
 

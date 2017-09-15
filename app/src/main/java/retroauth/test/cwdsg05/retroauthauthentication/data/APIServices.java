@@ -28,7 +28,6 @@ public interface APIServices {
     public static final String API_SITE_CONFIG_SG = "sg";
     public static final String API_SITE_CONFIG_ID = "id";
 
-
     @POST("oauth/login")
     @Headers({"Content-type: application/json"})
     Observable<Response<AuthResponse>> postLoginUser(@Body LoginRequest data);

@@ -1,7 +1,6 @@
 package retroauth.test.cwdsg05.retroauthauthentication.views;
 
 import android.accounts.Account;
-import android.accounts.AccountManager;
 import android.content.Context;
 import android.os.Build;
 import android.provider.Settings;
@@ -16,7 +15,6 @@ import android.widget.Toast;
 
 import com.andretietz.retroauth.AuthAccountManager;
 
-import butterknife.BindString;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import io.reactivex.Observer;
